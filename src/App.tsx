@@ -1,8 +1,28 @@
-import * as React from "react";
+import React, { useState } from "react";
+import { useTasks } from "./hooks/useTasks";
+import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
+import { Task } from "./types";
 
-export default () => (
-  <>
-    <h1>Welcome to React Vite Micro App!</h1>
-    <p>Hard to get more minimal than this React app.</p>
-  </>
-);
+const App: React.FC = () => {
+  const { tasks, loading } = useTasks();
+  const [localTasks, setLocalTasks] = useState<Task[]>([]);
+
+  const addTask = (task: Task) => {
+    setLocalTasks((prev) => [...prev, task]);
+  };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  return (
+    <div>
+      <h1>Task Tracker</h1>
+      <TaskForm addTask={addTask} />
+      <TaskList tasks={[...tasks, ...localTasks]} />
+    </div>
+  );
+};
+
+export default App;
