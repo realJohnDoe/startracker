@@ -12,7 +12,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
-            <strong>{task.name}</strong> (Effort: {task.effort})
+            <strong>{task.name}</strong> (Effort in Hours: {task.effort})
           </li>
         ))}
       </ul>

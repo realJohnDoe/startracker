@@ -7,7 +7,7 @@ interface TaskFormProps {
 
 const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
   const [name, setName] = useState("");
-  const [effort, setEffort] = useState<number>(0.1);
+  const [effort, setEffort] = useState<number>(1);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,13 +22,13 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
 
     addTask(newTask);
     setName("");
-    setEffort(0.1);
+    setEffort(1);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Task Name:</label>
+        <label>Task Name: </label>
         <input
           type="text"
           value={name}
@@ -36,15 +36,16 @@ const TaskForm: React.FC<TaskFormProps> = ({ addTask }) => {
         />
       </div>
       <div>
-        <label>Effort (0-1):</label>
-        <input
-          type="number"
+        <label>Effort in hours: </label>
+        <select
           value={effort}
           onChange={(e) => setEffort(Number(e.target.value))}
-          min={0}
-          max={1}
-          step={0.1}
-        />
+        >
+          <option value={1}>1</option>
+          <option value={10}>10</option>
+          <option value={100}>100+</option>
+          <option value={100000}>unreachable</option>
+        </select>
       </div>
       <button type="submit">Add Task</button>
     </form>
