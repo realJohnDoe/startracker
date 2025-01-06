@@ -1,0 +1,22 @@
+{
+  "name": "startracker",
+  "version": "1.0.0",
+  "description": "A task and goal tracker based on vector spaces",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realJohnDoe/startracker.git"
+  },
+  "author": "Johannes Döllinger",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/realJohnDoe/startracker/issues"
+  },
+  "homepage": "https://github.com/realJohnDoe/startracker#readme",
+  "dependencies": {
+    "firebase": "^11.1.0"
+  }
+}
